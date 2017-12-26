@@ -1,0 +1,82 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CmsUno\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-26 18:33+0100\n"
+"PO-Revision-Date: 2017-12-26 18:35+0100\n"
+"Last-Translator: malgrange <jacques.malgrange@gmail.com>\n"
+"Language-Team: Jacques Malgrange <contacter@boiteasite.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Report-\tmsgstr-Bugs-To: \n"
+"Report-\t\tmsgstr-Bugs-To: \n"
+"X-Poedit-KeywordsList: _;T_\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: ../../..\n"
+
+#: ../../../editheme.php:21
+msgid "Edit Theme"
+msgstr "Edit Thème"
+
+#: ../../../editheme.php:22
+msgid "This plugin allows you to edit the templates."
+msgstr "Ce plugin vous permet de modifier les templates."
+
+#: ../../../editheme.php:23
+msgid ""
+"The Files started with '_0' are a copy of the original. You cannot remove "
+"the original."
+msgstr ""
+"Les fichiers débutants par '_0' sont une copie de l'original. Vous ne pouvez "
+"pas supprimer l'original."
+
+#: ../../../editheme.php:25
+msgid "File"
+msgstr "Fichier"
+
+#: ../../../editheme.php:43
+msgid "Edit"
+msgstr "Editer"
+
+#: ../../../editheme.php:49
+msgid "Restore original"
+msgstr "Restaurer l'original"
+
+#: ../../../editheme.php:50
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../../../editheme.php:69 ../../../editheme.php:90
+msgid "Backup performed"
+msgstr "Sauvegarde effectuée"
+
+#: ../../../editheme.php:73 ../../../editheme.php:91
+msgid "Impossible backup"
+msgstr "Sauvegarde impossible"
+
+#~ msgid "Uno CSS"
+#~ msgstr "Uno CSS"
+
+#~ msgid "The code will be installed at the top of the page, in the /head/."
+#~ msgstr ""
+#~ "Le code sera install&eacute; en d&eacute;but de page, dans la partie /"
+#~ "head/."
+
+#~ msgid "CSS Styles"
+#~ msgstr "Styles CSS"
+
+#~ msgid "Write CSS"
+#~ msgstr "Ecrire les styles CSS"
+
+#~ msgid "without"
+#~ msgstr "sans"
+
+#~ msgid "the two opening and closing styles tags."
+#~ msgstr "les deux balises style d'ouverture et de fermeture."
+
+#~ msgid "Save settings"
+#~ msgstr "Enregistre les param&egrave;tres"
