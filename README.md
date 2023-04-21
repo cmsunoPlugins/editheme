@@ -29,5 +29,6 @@ Edit and modify templates directly from CMSUno with syntax highlighting. Use Cod
 
 ### Versions ###
 
+* 1.2 - 21/04/2023 : ES6 - JQuery free
 * 1.1 - 28/09/2022 : Update CodeMirror version to 5.65.9
 * 1.0 - 26/12/2017 : First stable version

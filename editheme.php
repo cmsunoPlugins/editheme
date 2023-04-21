@@ -1,18 +1,16 @@
 <?php
 session_start(); 
-if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])!='xmlhttprequest') {sleep(2);exit;} // ajax request
 if(!isset($_POST['unox']) || $_POST['unox']!=$_SESSION['unox']) {sleep(2);exit;} // appel depuis uno.php
 ?>
 <?php
 include('../../config.php');
 include('lang/lang.php');
-$q = file_get_contents('../../data/busy.json'); $a = json_decode($q,true); $Ubusy = $a['nom'];
-$q = file_get_contents('../../data/'.$Ubusy.'/site.json'); $a = json_decode($q,true); $tem = $a['tem'];
+$busy = (isset($_POST['ubusy'])?preg_replace("/[^A-Za-z0-9-_]/",'',$_POST['ubusy']):'index');
+$tem = (isset($_POST['utem'])?preg_replace("/[^A-Za-z0-9-_]/",'',$_POST['utem']):'');
+if(empty($tem)) { $q = file_get_contents('../../data/'.$busy.'/site.json'); $a = json_decode($q,true); $tem = $a['tem']; } // utem in CMSUno > 1.9.3
 // ********************* actions *************************************************************************
-if (isset($_POST['action']))
-	{
-	switch ($_POST['action'])
-		{
+if(isset($_POST['action'])) {
+	switch ($_POST['action']) {
 		// ********************************************************************************************
 		case 'plugin': ?>
 		<link rel="stylesheet" href="uno/plugins/editheme/codemirror/codemirror.css">
@@ -26,17 +24,15 @@ if (isset($_POST['action']))
 				<select id="edithemeSel" name="edithemeSel">
 				<?php
 				$d = dirname(__FILE__).'/../../template/'.$tem.'/';
-				if($dh=opendir($d))
-					{
+				if($dh=opendir($d)) {
 					$a = array();
-					while(($file = readdir($dh))!==false)
-						{
+					while(($file = readdir($dh))!==false) {
 						if(is_file($d.$file) && $file!='.' && $file!='..') $a[] = $file;
-						}
+					}
 					closedir($dh);
 					sort($a);
 					foreach($a as $v) echo '<option value="'.$v.'">'.$v.'</option>';
-					}
+				}
 				?>
 				</select>
 				<input type="hidden" name="edithemeFile" id="edithemeFile" value="" />
@@ -61,38 +57,34 @@ if (isset($_POST['action']))
 		case 'save':
 		$f = $_POST['file'];
 		$out = $_POST['cont'];
-		if(substr($f,0,2)!='_0')
-			{
+		if(substr($f,0,2)!='_0') {
 			if(!file_exists('../../template/'.$tem.'/_0'.$f)) copy('../../template/'.$tem.'/'.$f, '../../template/'.$tem.'/_0'.$f);
-			if(file_put_contents('../../template/'.$tem.'/'.$f, $out))
-				{
+			if(file_put_contents('../../template/'.$tem.'/'.$f, $out)) {
 				echo T_('Backup performed');
 				exit;
-				}
 			}
+		}
 		echo '!'.T_('Impossible backup');
 		break;
 		// ********************************************************************************************
 		case 'restore':
 		$f = $_POST['file']; $b = 0;
-		if(substr($f,0,2)!='_0' && file_exists('../../template/'.$tem.'/_0'.$f))
-			{
+		if(substr($f,0,2)!='_0' && file_exists('../../template/'.$tem.'/_0'.$f)) {
 			unlink('../../template/'.$tem.'/'.$f);
 			rename('../../template/'.$tem.'/_0'.$f, '../../template/'.$tem.'/'.$f);
 			$b = 1;
-			}
-		else if(substr($f,0,2)=='_0')
-			{
+		}
+		else if(substr($f,0,2)=='_0') {
 			if(file_exists('../../template/'.$tem.'/'.substr($f,2))) unlink('../../template/'.$tem.'/'.substr($f,2));
 			rename('../../template/'.$tem.'/'.$f, '../../template/'.$tem.'/'.substr($f,2));
 			$b = 1;
-			}
+		}
 		if($b) echo T_('Backup performed');
 		else echo '!'.T_('Impossible backup');
 		break;
 		// ********************************************************************************************
-		}
+	}
 	clearstatcache();
 	exit;
-	}
+}
 ?>
